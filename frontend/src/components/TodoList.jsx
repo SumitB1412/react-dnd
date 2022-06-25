@@ -38,13 +38,12 @@ const TodoList = ({ todos, setTodos, CompletedTodos, setCompletedTodos }) => {
         )}
       </Droppable>
       <Droppable droppableId="TodosRemove">
-        {(provided, snapshot) => (
+        {(provided) => (
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={`todos  ${
-              snapshot.isDraggingOver ? "dragcomplete" : "remove"
-            }`}
+            className={"todos"}
+            style={{backgroundColor: "rgb(235, 103, 80)"}}
           >
             <span className="todosHeading">Completed</span>
             {CompletedTodos?.map((todo, index) => (
