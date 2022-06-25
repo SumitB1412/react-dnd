@@ -17,7 +17,7 @@ const InputField = ({ todo, setTodo, handleAdd }) => {
         value={todo}
         ref={inputRef}
         onChange={(e) => setTodo(e.target.value)}
-        className="input__box"
+        className="inputBox"
       />
     </form>
   );

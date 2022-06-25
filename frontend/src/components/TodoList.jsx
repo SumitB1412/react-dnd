@@ -2,12 +2,7 @@ import React from "react";
 import SingleTodo from "./SingleTodo";
 import { Droppable } from "react-beautiful-dnd";
 
-const TodoList = ({
-  todos,
-  setTodos,
-  CompletedTodos,
-  setCompletedTodos,
-}) => {
+const TodoList = ({ todos, setTodos, CompletedTodos, setCompletedTodos }) => {
   return (
     <div className="container">
       <Droppable droppableId="TodosList">
@@ -17,7 +12,7 @@ const TodoList = ({
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            <span className="todos__heading">Active Tasks</span>
+            <span className="todosHeading">Todos</span>
             {todos?.map((todo, index) => (
               <SingleTodo
                 index={index}
@@ -40,7 +35,7 @@ const TodoList = ({
               snapshot.isDraggingOver ? "dragcomplete" : "remove"
             }`}
           >
-            <span className="todos__heading">Completed Tasks</span>
+            <span className="todosHeading">Completed</span>
             {CompletedTodos?.map((todo, index) => (
               <SingleTodo
                 index={index}
