@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import SingleTodo from "./SingleTodo";
+import InputField from "./InputField";
 import { Droppable } from "react-beautiful-dnd";
 
 const TodoList = ({ todos, setTodos, CompletedTodos, setCompletedTodos }) => {
+  const [todo, setTodo] = useState("");
+  const handleAdd = (e) => {
+    e.preventDefault();
+
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
+      setTodo("");
+    }
+  };
   return (
     <div className="container">
       <Droppable droppableId="TodosList">
@@ -22,6 +32,7 @@ const TodoList = ({ todos, setTodos, CompletedTodos, setCompletedTodos }) => {
                 setTodos={setTodos}
               />
             ))}
+            <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
             {provided.placeholder}
           </div>
         )}

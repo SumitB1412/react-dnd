@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import "./App.css";
-import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import { DragDropContext } from "react-beautiful-dnd";
 
 const App = () => {
-  const [todo, setTodo] = useState("");
+  // const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [CompletedTodos, setCompletedTodos] = useState([]);
 
-  const handleAdd = (e) => {
-    e.preventDefault();
+  // const handleAdd = (e) => {
+  //   e.preventDefault();
 
-    if (todo) {
-      setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
-      setTodo("");
-    }
-  };
+  //   if (todo) {
+  //     setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
+  //     setTodo("");
+  //   }
+  // };
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
-
 
     if (!destination) {
       return;
@@ -59,7 +57,6 @@ const App = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
-        <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodoList
           todos={todos}
           setTodos={setTodos}
