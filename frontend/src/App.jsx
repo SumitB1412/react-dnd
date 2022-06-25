@@ -4,18 +4,8 @@ import TodoList from "./components/TodoList";
 import { DragDropContext } from "react-beautiful-dnd";
 
 const App = () => {
-  // const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [CompletedTodos, setCompletedTodos] = useState([]);
-
-  // const handleAdd = (e) => {
-  //   e.preventDefault();
-
-  //   if (todo) {
-  //     setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
-  //     setTodo("");
-  //   }
-  // };
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -34,7 +24,6 @@ const App = () => {
     let add;
     let active = todos;
     let complete = CompletedTodos;
-    // Source Logic
     if (source.droppableId === "TodosList") {
       add = active[source.index];
       active.splice(source.index, 1);
@@ -43,7 +32,6 @@ const App = () => {
       complete.splice(source.index, 1);
     }
 
-    // Destination Logic
     if (destination.droppableId === "TodosList") {
       active.splice(destination.index, 0, add);
     } else {

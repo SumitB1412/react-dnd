@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import "./styles.css";
 
 const InputField = ({ todo, setTodo, handleAdd }) => {
   const inputRef = useRef(null);
