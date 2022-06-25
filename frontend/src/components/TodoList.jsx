@@ -1,16 +1,8 @@
 import React from "react";
-import { Todo } from "../models/models";
 import SingleTodo from "./SingleTodo";
 import { Droppable } from "react-beautiful-dnd";
 
-interface props {
-  todos: Array<Todo>;
-  setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
-  setCompletedTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
-  CompletedTodos: Array<Todo>;
-}
-
-const TodoList: React.FC<props> = ({
+const TodoList = ({
   todos,
   setTodos,
   CompletedTodos,

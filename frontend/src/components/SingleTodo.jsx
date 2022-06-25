@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { MdDone } from "react-icons/md";
-import { Todo } from "../models/models";
 import { Draggable } from "react-beautiful-dnd";
 
-const SingleTodo: React.FC<{
-  index: number;
-  todo: Todo;
-  todos: Array<Todo>;
-  setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
-}> = ({ index, todo, todos, setTodos }) => {
-  const [edit, setEdit] = useState<boolean>(false);
-  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+const SingleTodo = ({ index, todo, todos, setTodos }) => {
+  const [edit, setEdit] = useState(false);
+  const [editTodo, setEditTodo] = useState(todo.todo);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);
 
-  const handleEdit = (e: React.FormEvent, id: number) => {
+  const handleEdit = (e , id) => {
     e.preventDefault();
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
@@ -27,11 +19,11 @@ const SingleTodo: React.FC<{
     setEdit(false);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const handleDone = (id: number) => {
+  const handleDone = (id) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
@@ -61,7 +53,7 @@ const SingleTodo: React.FC<{
           ) : (
             <span className="todos__single--text">{todo.todo}</span>
           )}
-          <div>
+          {/* <div>
             <span
               className="icon"
               onClick={() => {
@@ -78,7 +70,7 @@ const SingleTodo: React.FC<{
             <span className="icon" onClick={() => handleDone(todo.id)}>
               <MdDone />
             </span>
-          </div>
+          </div> */}
         </form>
       )}
     </Draggable>
