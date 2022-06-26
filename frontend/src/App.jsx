@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import TodoList from "./components/TodoList";
 import { DragDropContext } from "react-beautiful-dnd";
+
+
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [CompletedTodos, setCompletedTodos] = useState([]);
 
+  
   const onDragEnd = (result) => {
     const { destination, source } = result;
 
@@ -40,6 +43,11 @@ const App = () => {
 
     setCompletedTodos(complete);
     setTodos(active);
+    // localStorage.setItem("completed", JSON.stringify(CompletedTodos));
+    // localStorage.setItem("todos", JSON.stringify(todos));
+    // localStorageTodo = JSON.parse(localStorage.getItem("todos")) || todos;
+    // localStorageCompletedTodo =
+    //   JSON.parse(localStorage.getItem("completed")) || CompletedTodos;
   };
 
   return (

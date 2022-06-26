@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
+import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-const SingleTodo = ({ index, todo, todos, setTodos }) => {
-  const [edit, setEdit] = useState(false);
-  const [editTodo, setEditTodo] = useState(todo.todo);
-
-  const inputRef = useRef(null);
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, [edit]);
-
-  const handleEdit = (e, id) => {
-    e.preventDefault();
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
-    );
-    setEdit(false);
-  };
-
+const SingleTodo = ({ index, todo }) => {
+  // console.log(todo);
   return (
     <Draggable draggableId={todo.id.toString()} index={index}>
       {(provided) => (
         <form
-          onSubmit={(e) => handleEdit(e, todo.id)}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           className={"todosSingle"}
         >
-          <span className="todosSingleText">{todo.todo}</span>
+          <span className="todosSingleText">{todo.title}</span>
         </form>
       )}
     </Draggable>

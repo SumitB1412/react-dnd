@@ -1,9 +1,5 @@
-/* .App {
-  height: 550px;
-  text-align: center;
-  background: black;
-}
 
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -77,6 +73,7 @@ button {
 .todosHeading {
   font-size: 30px;
   color: white;
+  text-align: center
 }
 
 .todosSingle {
